@@ -1,7 +1,8 @@
 /*
  * Create a list that holds all of your cards
- */
-
+ */ 
+cardList = ["fa fa-bolt","fa fa-diamond","fa fa-paper-plane-o","fa fa-anchor","fa fa-cube","fa fa-leaf","fa fa-bicycle","fa fa-bomb",
+			"fa fa-bolt","fa fa-diamond","fa fa-paper-plane-o","fa fa-anchor","fa fa-cube","fa fa-leaf","fa fa-bicycle","fa fa-bomb"];
 
 /*
  * Display the cards on the page
@@ -9,6 +10,19 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+function cardListAssign() {
+	cardList = shuffle(cardList);	
+	var k=document.querySelectorAll('.deck li');
+	for(let s = 0; s < k.length; s++){
+		k[s].className == k[s].setAttribute("Class", "card"); 
+		// console.log(s); card match
+		}
+	var x=document.querySelectorAll('.deck i');
+	for(let j = 0; j < x.length; j++){
+		x[j].className === x[j].setAttribute("Class", cardList[j]); 
+		}
+return x;
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -25,7 +39,6 @@ function shuffle(array) {
     return array;
 }
 
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -36,3 +49,21 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+cardListAssign();
+function cardClick(){
+	var k=document.querySelectorAll('.deck li');
+	
+	for(let s = 0; s < k.length; s++){		 
+		k[s] == k[s].addEventListener("click", function(){ 
+			k[s].className ==k[s].setAttribute("Class", "card open show");
+			}); 
+	}
+
+	 
+// reset	 
+	var l=document.querySelector('.restart');
+	l == l.addEventListener("click", function(){ 
+			cardListAssign();
+			});				
+ } 
+cardClick();
