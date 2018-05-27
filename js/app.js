@@ -55,7 +55,7 @@ function cardClick(){
 	
 	for(let s = 0; s < k.length; s++){		 
 		k[s] == k[s].addEventListener("click", function(){ 
-			k[s].className ==k[s].setAttribute("Class", "card open show");
+			k[s].className ==k[s].setAttribute("Class", "card match");
 			}); 
 	}
 
