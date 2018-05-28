@@ -49,21 +49,96 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-cardListAssign();
-function cardClick(){
-	var k=document.querySelectorAll('.deck li');
-	
-	for(let s = 0; s < k.length; s++){		 
-		k[s] == k[s].addEventListener("click", function(){ 
-			k[s].className ==k[s].setAttribute("Class", "card match");
-			}); 
-	}
+//cardListAssign();
 
-	 
-// reset	 
+const deck = document.querySelector(".deck");
+let opened = [];
+let matched = [];
+
+
+deck.addEventListener("click", function(evt) {
+	if (evt.target.nodeName === "LI") {
+		console.log(evt.target.nodeName + " Was clicked");
+				flipCard();
+				
+	function flipCard() {
+		evt.target.classList.add("match");	
+		addToOpened();
+	}
+	function addToOpened() {
+		//add to opened array for two opened cards
+		if (opened.length === 0 || opened.length === 1) {
+			// Push that img to opened array
+			opened.push(evt.target.firstElementChild);
+		}
+		console.log(opened);
+		compareTwo();
+	}
+}
+});
+
+function compareTwo() {
+	if (opened.length === 2) {
+  		// Disable any further mouse clicks on other cards
+  		document.body.style.pointerEvents = "none";
+  	}
+	// Compare the two item contnts
+	if (opened.length === 2 && opened[0].className === opened[1].className) {
+		// If matched call match()
+		match();
+		console.log("It's a Match!");
+	} else if (opened.length === 2 && opened[0].className != opened[1].className) {
+		// If No match call noMatch()
+		noMatch();
+		 console.log("NO Match!");
+	}
+}
+
+function match() {
+	/* acess two cards in opened and set as opened cards and enable pointers
+	*/
+	setTimeout(function() {
+		opened[0].parentElement.classList.remove("match");
+		opened[1].parentElement.classList.remove("match");
+		opened[0].parentElement.classList.add("open");
+		opened[1].parentElement.classList.add("open");
+		opened[0].parentElement.classList.add("show");
+		opened[1].parentElement.classList.add("show");
+
+		matched.push(...opened);
+		// Allow for further mouse clicks on cards
+		document.body.style.pointerEvents = "auto";
+		// Check to see if the game has been won with all 8 pairs
+		winGame();
+		// Clear the opened array
+		opened = [];
+	}, 600);
+	// Call movesCounter to increment by one
+	//movesCounter();
+	//starRating();
+}
+
+function noMatch() {
+	/* keep open cards fro 800 ms and then hide cardss*/
+	setTimeout(function() {
+		opened[0].parentElement.classList.remove("match");
+		opened[1].parentElement.classList.remove("match");
+		// Allow further mouse clicks on cards
+		document.body.style.pointerEvents = "auto";
+		// Remove the cards from opened array
+		opened = [];
+	}, 800);
+}
+
+
+
+
+//*reset	 
 	var l=document.querySelector('.restart');
 	l == l.addEventListener("click", function(){ 
 			cardListAssign();
 			});				
- } 
-cardClick();
+  
+
+
+
