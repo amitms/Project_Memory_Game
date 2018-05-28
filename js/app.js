@@ -1,8 +1,21 @@
 /*
  * Create a list that holds all of your cards
  */ 
+
+/*********** working global variables****/
+
 cardList = ["fa fa-bolt","fa fa-diamond","fa fa-paper-plane-o","fa fa-anchor","fa fa-cube","fa fa-leaf","fa fa-bicycle","fa fa-bomb",
 			"fa fa-bolt","fa fa-diamond","fa fa-paper-plane-o","fa fa-anchor","fa fa-cube","fa fa-leaf","fa fa-bicycle","fa fa-bomb"];
+
+const deck = document.querySelector(".deck");
+let opened = [];
+let matched = [];
+
+let stars = document.querySelectorAll(".stars i");
+let movesCount = document.querySelector(".moves");
+
+let moves = 0;
+/***************************************/
 
 /*
  * Display the cards on the page
@@ -21,6 +34,10 @@ function cardListAssign() {
 	for(let j = 0; j < x.length; j++){
 		x[j].className === x[j].setAttribute("Class", cardList[j]); 
 		}
+	movesCount.innerHTML = 0;
+	stars[1].setAttribute('Class','fa fa-star');
+	stars[2].setAttribute('Class','fa fa-star');
+
 return x;
 }
 
@@ -49,32 +66,26 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-//cardListAssign();
-
-const deck = document.querySelector(".deck");
-let opened = [];
-let matched = [];
-
+cardListAssign();
 
 deck.addEventListener("click", function(evt) {
 	if (evt.target.nodeName === "LI") {
-		console.log(evt.target.nodeName + " Was clicked");
-				flipCard();
+		flipCard();
 				
-	function flipCard() {
-		evt.target.classList.add("match");	
-		addToOpened();
-	}
-	function addToOpened() {
-		//add to opened array for two opened cards
-		if (opened.length === 0 || opened.length === 1) {
-			// Push that img to opened array
-			opened.push(evt.target.firstElementChild);
+		function flipCard() {
+			evt.target.classList.add("match");	
+			addToOpened();
 		}
-		console.log(opened);
-		compareTwo();
+		function addToOpened() {
+			//add to opened array for two opened cards
+			if (opened.length === 0 || opened.length === 1) {
+				// Push that img to opened array
+				opened.push(evt.target.firstElementChild);
+			}
+			console.log(opened);
+			compareTwo();
+		}
 	}
-}
 });
 
 function compareTwo() {
@@ -95,8 +106,7 @@ function compareTwo() {
 }
 
 function match() {
-	/* acess two cards in opened and set as opened cards and enable pointers
-	*/
+	// acess two cards in opened and set as opened cards and enable pointers
 	setTimeout(function() {
 		opened[0].parentElement.classList.remove("match");
 		opened[1].parentElement.classList.remove("match");
@@ -114,8 +124,8 @@ function match() {
 		opened = [];
 	}, 600);
 	// Call movesCounter to increment by one
-	//movesCounter();
-	//starRating();
+	movesCounter();
+	starRating();
 }
 
 function noMatch() {
@@ -128,16 +138,37 @@ function noMatch() {
 		// Remove the cards from opened array
 		opened = [];
 	}, 800);
+	movesCounter();
+	starRating();
 }
 
+function winGame() {
+	if (matched.length === 16) {
+		let getFaStar = document.getElementsByClassName('fa fa-star');
+		alert("Contratulation You Won ! with "+movesCount.innerHTML+" moves "+" and "+getFaStar.length+" stars.");
+		cardListAssign();
+	}
+}
 
+function movesCounter() {
+	movesCount.innerHTML ++;
+}
 
+function starRating() {
+	if (movesCount.innerHTML === "14") {
+		console.log('remove 3rd star');		
+		stars[2].setAttribute('Class','fa');
+	}
+	if (movesCount.innerHTML === "18") {
+		stars[1].setAttribute('Class','fa');
+	}
+}
 
 //*reset	 
-	var l=document.querySelector('.restart');
-	l == l.addEventListener("click", function(){ 
-			cardListAssign();
-			});				
+var l=document.querySelector('.restart');
+l == l.addEventListener("click", function(){ 
+	cardListAssign();
+	});				
   
 
 
