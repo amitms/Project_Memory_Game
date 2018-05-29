@@ -195,7 +195,7 @@ function displayModal() {
 	statsElement.classList.add("stats");
 	stats.appendChild(statsElement);
 	let p = stats.querySelectorAll("p.stats");
-	p[0].innerHTML = "moves:" +movesCount.innerHTML+",		stars: "+getFaStar.length+",		Completed Time: " + minutes + " Minutes and " + seconds + " Seconds";
+	p[0].innerHTML = "moves:" +movesCount.innerHTML+", stars: "+getFaStar.length+",	Completed Time: " + minutes + " Minutes and " + seconds + " Seconds";
 
 	const modalClose = document.getElementsByClassName("close")[0];
 	modal.style.display= "block";
