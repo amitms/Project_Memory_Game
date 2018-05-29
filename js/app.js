@@ -13,8 +13,14 @@ let matched = [];
 
 let stars = document.querySelectorAll(".stars i");
 let movesCount = document.querySelector(".moves");
+const modal = document.getElementById("modal");
 
-let moves = 0;
+const timeCounter = document.querySelector(".timer");
+let time;
+let minutes = 0;
+let seconds = 0;
+let timeStart = false;
+
 /***************************************/
 
 /*
@@ -37,6 +43,12 @@ function cardListAssign() {
 	movesCount.innerHTML = 0;
 	stars[1].setAttribute('Class','fa fa-star');
 	stars[2].setAttribute('Class','fa fa-star');
+	
+	stopTime();
+	timeStart = false;
+	seconds = 0;
+	minutes = 0;
+	timeCounter.innerHTML = "<i class='fa fa-hourglass-start'></i>" + " Timer: 00:00";
 
 return x;
 }
@@ -70,6 +82,12 @@ cardListAssign();
 
 deck.addEventListener("click", function(evt) {
 	if (evt.target.nodeName === "LI") {
+		
+		if (timeStart === false) {
+			timeStart = true; 
+			timer();
+		}
+		
 		flipCard();
 				
 		function flipCard() {
@@ -144,9 +162,9 @@ function noMatch() {
 
 function winGame() {
 	if (matched.length === 16) {
-		let getFaStar = document.getElementsByClassName('fa fa-star');
-		alert("Contratulation You Won ! with "+movesCount.innerHTML+" moves "+" and "+getFaStar.length+" stars.");
 		cardListAssign();
+		displayModal();
+		stopTime();
 	}
 }
 
@@ -163,6 +181,45 @@ function starRating() {
 		stars[1].setAttribute('Class','fa');
 	}
 }
+
+function displayModal() {	
+	let getFaStar = document.getElementsByClassName('fa fa-star');
+	//	alert("Contratulation You Won ! with "+movesCount.innerHTML+" moves "+" and "+getFaStar.length+" stars.");
+	let stats = document.querySelector(".modal-content");
+	const statsElement = document.createElement("p");
+	statsElement.classList.add("stats");
+	stats.appendChild(statsElement);
+	let p = stats.querySelectorAll("p.stats");
+	p[0].innerHTML = "moves:" +movesCount.innerHTML+" stars: "+getFaStar.length;
+
+	const modalClose = document.getElementsByClassName("close")[0];
+	modal.style.display= "block";
+	modalClose.onclick = function() {
+		modal.style.display = "none";
+		};
+// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	};
+}
+function timer() {
+	// Update the count every 1 second
+	time = setInterval(function() {
+		seconds++;
+			if (seconds === 60) {
+				minutes++;
+				seconds = 0;
+			}
+		timeCounter.innerHTML = "<i class='fa fa-hourglass-start'></i>" + " Timer: " + minutes + " Mins " + seconds + " Secs" ;
+	}, 1000);
+}
+
+function stopTime() {
+	clearInterval(time);
+}
+
 
 //*reset	 
 var l=document.querySelector('.restart');
