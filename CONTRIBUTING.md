@@ -1,3 +1,4 @@
 # How to contribute
+This repository addition to the starter code for all Udacity students. code is modified to javascript code file app.js, CSS content in app.cs and to some extent in index.html
 
-The files in this repository are used as the starting point for all students. Because we want students to write the majority of the code themselves, pull requests (most likely) will _not_ be merged into the project.
+further additions, styling can be added to these 3 files.
