@@ -12,4 +12,4 @@ This is the Memory Game project. to play just get started to get the cards in sa
 
 This repository addition to the starter code for all Udacity students. code is modified to javascript code file app.js, CSS content in app.cs and to some extent in index.html
 
-further additions, styling can be added to these 3 files.
+further additions, styling (dependency bootstrap styling) can be added to these 3 files.
