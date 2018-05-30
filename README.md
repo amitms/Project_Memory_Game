@@ -11,7 +11,7 @@ This is the Memory Game project. to play just get started to get the cards in sa
 
  The user may click the "Play Again" button if they wish to play additional games. Please note that all cards are randomized each game. If the user wishes to restart the game without completing it, click the replay button located on the upper right side above the deck. game can be reset anytime by clicking reset
 
-###Dependencies:
+### Dependencies:
 Offline installation: 
 For offline gameplay, all files must be cloned or downloaded from https://github.com/amitms/Project_Memory_Game/ Check for the following:
 
