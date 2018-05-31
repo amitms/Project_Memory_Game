@@ -31,7 +31,7 @@ Game can be reset/ replay anytime by replay button on upper right. star rating i
 ## Project Dependencies:
 * [Font Awesome](https://fontawesome.com/ 				prefetch link: https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">).
 * [Google Fonts](https://fonts.google.com/specimen/Coda prefetch link: https://fonts.googleapis.com/css?family=Coda)
-prefech is done in <head>
+prefech is done in head element.
 
 ## Contributing
 
