@@ -1,18 +1,11 @@
 # Memory Game Project
 
-## Table of Contents
+## Introduction (Project Preview)
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+This is classic Memory Game to find matching pairs . in this case there are 8 pairs which appear for short time (800ms) upon clicking. upon findina matching pairs the matched pairs are shown and goes on. upon finding all pairs game ends and star rating (depends upon moves completed, time and moves is shown in modal display. 
 
-## Instructions
-
-This is the Memory Game project. to play just get started to get the cards in same pair selected. there are 8 pairs. get right and win the game with star ratings. 
-
- The user may click the "Play Again" button if they wish to play additional games. Please note that all cards are randomized each game. If the user wishes to restart the game without completing it, click the replay button located on the upper right side above the deck. game can be reset anytime by clicking reset
-
-### Dependencies:
-Offline installation: 
+## Installation
+* Offline installation: 
 For offline gameplay, all files must be cloned or downloaded from https://github.com/amitms/Project_Memory_Game/ Check for the following:
 
 index.html
@@ -24,6 +17,21 @@ img folder
 
 Open 'index.html' in your browser and start the game.
 main modifications are app.js, ap.css and index.html.
+
+## Instructions(how to play)
+start by clicking off the cards and keep playing until the matched cards are found. 
+
+At the end, user may click the "Play Again" button if they wish to play additional games. Please note that all cards are randomized on each game. If the user wishes to restart the game without completing it, click the replay button located on the upper right side above the deck, which can be clicked anytime.
+
+
+## Game features:
+Game can be reset/ replay anytime by replay button on upper right. star rating is given upon how many less moves the game is completed.
+
+
+## Project Dependencies:
+* [Font Awesome](https://fontawesome.com/ 				prefetch link: https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">).
+* [Google Fonts](https://fonts.google.com/specimen/Coda prefetch link: https://fonts.googleapis.com/css?family=Coda)
+prefech is done in <head>
 
 ## Contributing
 
